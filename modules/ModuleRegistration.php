@@ -44,7 +44,7 @@ class ModuleRegistration extends \ModuleRegistration
         foreach ($dependencies as $field => $dependentFields) {
             if ($this->Input->post($field)) {
                 foreach ($dependentFields as $dependentField) {
-                    // Preserve orignal value, so we can reset it later
+                    // Preserve orignal value so we can reset it later
                     $this->originalFieldValues[$dependentField] = $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'];
 
                     // Set field to mandatory
@@ -63,7 +63,7 @@ class ModuleRegistration extends \ModuleRegistration
                 if (is_null($value)) {
                     unset($GLOBALS['TL_DCA']['tl_member']['fields'][$field]['eval']['mandatory']);
                 } else {
-                    $GLOBALS['TL_DCA']['tl_member']['fields'][$field]['eval']['mandatory'] = value;
+                    $GLOBALS['TL_DCA']['tl_member']['fields'][$field]['eval']['mandatory'] = $value;
                 }
             }
         }
