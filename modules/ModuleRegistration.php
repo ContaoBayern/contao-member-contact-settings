@@ -42,7 +42,7 @@ class ModuleRegistration extends \ModuleRegistration
 
 
         foreach ($dependencies as $field => $dependentFields) {
-            if ($this->Input->post($field)) {
+            if (in_array($field, $this->editable) && $this->Input->post($field)) {
                 foreach ($dependentFields as $dependentField) {
                     // Preserve orignal value so we can reset it later
                     $this->originalFieldValues[$dependentField] = $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'];
