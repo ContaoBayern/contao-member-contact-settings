@@ -1,2 +1,2 @@
-# Contao Member contact settings
+# Contao Member Contact Settings
 Member contact settings extension for Contao Open Source CMS
