@@ -37,7 +37,10 @@ class ModuleRegistration extends \ModuleRegistration
     protected function setFieldDependencies()
     {
         $dependencies = [
+            'contactEmail' => ['email'],
+            'contactPost' => ['street','postal','city','country'],
             'contactPhone' => ['phone'],
+            'contactFax' => ['fax'],
         ];
 
 
@@ -55,7 +58,7 @@ class ModuleRegistration extends \ModuleRegistration
     }
 
     /**
-     * Resets the dca data to it's original values
+     * Resets the dca data to it's original values.
      */
     protected function resetDcaData() {
         if (!empty($this->originalFieldValues)) {
