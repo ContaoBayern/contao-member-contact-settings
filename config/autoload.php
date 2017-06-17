@@ -14,6 +14,8 @@ ClassLoader::addNamespaces([
 ClassLoader::addClasses([
     // Modules
     'ContaoBayern\MemberContactSettings\Modules\ModuleRegistration' => 'system/modules/member-contact-settings/modules/ModuleRegistration.php',
+    'ContaoBayern\MemberContactSettings\Modules\ModulePersonalData' => 'system/modules/member-contact-settings/modules/ModulePersonalData.php',
+    'ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager' => 'system/modules/member-contact-settings/classes/FieldDependencyManager.php',
 ]);
 
 TemplateLoader::addFiles([
