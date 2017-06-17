@@ -29,7 +29,7 @@ The setup is the same for both frontend modules (registration and member data):
 they depend.
 
 
-## New fields and dependencies in `tl_member`
+## New fields and dependencies in tl_member
 
 | Field          | Dependencies  |
 | -------------  | ------------- |
