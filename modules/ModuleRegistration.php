@@ -39,12 +39,12 @@ class ModuleRegistration extends \ModuleRegistration
     protected function setFieldDependencies()
     {
         foreach ($GLOBALS['TL_DCA']['tl_member']['fields'] as $field => $fieldconfig) {
-            if (!isset($fieldconfig['eval']['dependents'] || !is_array($fieldconfig['eval']['dependents']))) {
+            if (!isset($fieldconfig['eval']['dependents']) || !is_array($fieldconfig['eval']['dependents'])) {
                 continue;
             }
             if (in_array($field, $this->editable) && \Input::post($field)) {
-                foreach ($fieldconfig['eval']['dependents'] as $dependentField)) {
-                    // Preserve orignal value (of mandatory) so we can reset it later
+                foreach ($fieldconfig['eval']['dependents'] as $dependentField) {
+                    // Preserve orignal state of dependent's field mandatory setting so we can reset it later
                     $this->originalFieldValues[$dependentField] = $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'];
 
                     // Set field to be mandatory
