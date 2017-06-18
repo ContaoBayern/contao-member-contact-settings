@@ -1,5 +1,5 @@
 {
-  "name": "ContaoBayern/contao-member-contact-settings",
+  "name": "contao-bayern/contao-member-contact-settings",
   "description": "",
   "keywords": ["contao", "registration", "member", "mandatory fields", "dependent fields"],
   "type": "contao-module",
