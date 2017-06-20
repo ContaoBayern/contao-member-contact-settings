@@ -34,6 +34,6 @@ they depend.
 | Field          | Dependencies  |
 | -------------  | ------------- |
 | contactEmail   | email | 
-| contactPost    | street, postal, city, country |
+| contactLetter  | street, postal, city, country |
 | contactPhone   | phone |
 | contactFax     | fax   |

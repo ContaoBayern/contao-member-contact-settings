@@ -17,6 +17,6 @@ $GLOBALS['TL_LANG']['tl_member']['contactSettingsDetails'] = 'Kontakt-Einstellun
 
 // Fields
 $GLOBALS['TL_LANG']['tl_member']['contactEmail'] = ['Kontakt per E-Mail', 'Ich möchte per E-Mail kontaktiert werden.'];
-$GLOBALS['TL_LANG']['tl_member']['contactPost'] = ['Kontakt per Post', 'Ich möchte per Post kontaktiert werden.'];
+$GLOBALS['TL_LANG']['tl_member']['contactLetter'] = ['Kontakt per Brief-Post', 'Ich möchte per Brief-Post kontaktiert werden.'];
 $GLOBALS['TL_LANG']['tl_member']['contactPhone'] = ['Kontakt per Telefon', 'Ich möchte per Telefon kontaktiert werden.'];
 $GLOBALS['TL_LANG']['tl_member']['contactFax'] = ['Kontakt per Fax', 'Ich möchte per Fax kontaktiert werden.'];

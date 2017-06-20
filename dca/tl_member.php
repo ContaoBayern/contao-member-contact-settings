@@ -32,8 +32,8 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactEmail'] = [
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
-$GLOBALS['TL_DCA']['tl_member']['fields']['contactPost'] = [
-    'label' => &$GLOBALS['TL_LANG']['tl_member']['contactPost'],
+$GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter'] = [
+    'label' => &$GLOBALS['TL_LANG']['tl_member']['contactLetter'],
     'exclude' => true,
     'filter' => true,
     'inputType' => 'checkbox',
