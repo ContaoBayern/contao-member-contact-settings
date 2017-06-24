@@ -18,7 +18,7 @@ use ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager;
 class ModuleRegistration extends \ModuleRegistration
 {
     /**
-     * Original dca field values which are to be resetted when we are done
+     * Original dca field values which are to be resetted when we are done.
      *
      * @var array
      */
@@ -34,5 +34,4 @@ class ModuleRegistration extends \ModuleRegistration
         parent::compile();
         $fieldDependencyManager->resetDcaData();
     }
-
 }

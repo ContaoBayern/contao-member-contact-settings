@@ -1,16 +1,11 @@
 <?php
 
-/**
- * Register the namespaces
- */
+// Register namespaces
 ClassLoader::addNamespaces([
     'ContaoBayern',
 ]);
 
-
-/**
- * Register the classes
- */
+// Register classes
 ClassLoader::addClasses([
     // Modules
     'ContaoBayern\MemberContactSettings\Modules\ModuleRegistration' => 'system/modules/member-contact-settings/modules/ModuleRegistration.php',
@@ -18,6 +13,7 @@ ClassLoader::addClasses([
     'ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager' => 'system/modules/member-contact-settings/classes/FieldDependencyManager.php',
 ]);
 
+// Register templates
 TemplateLoader::addFiles([
     'member_default' => 'system/modules/member-contact-settings/templates/member',
 ]);

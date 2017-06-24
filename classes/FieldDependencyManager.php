@@ -16,14 +16,14 @@ namespace ContaoBayern\MemberContactSettings\Classes;
 class FieldDependencyManager
 {
     /**
-     * The names of the editable fields we handle
+     * The names of the editable fields we handle.
      *
      * @var array
      */
     private $editable;
 
     /**
-     * Original dca field values which are to be resetted when we are done
+     * Original dca field values which are to be resetted when we are done.
      *
      * @var array
      */
@@ -32,7 +32,7 @@ class FieldDependencyManager
     /**
      * FieldDependencyManager constructor.
      *
-     * @var array $fieldnames The names of the editable fields we handle
+     * @param $fieldnames array The names of the editable fields we handle
      */
     public function __construct($fieldnames)
     {
@@ -77,5 +77,4 @@ class FieldDependencyManager
             }
         }
     }
-
 }

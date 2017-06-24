@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter'] = [
         'feEditable' => true,
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
-        'dependents' => ['street','postal','city','country'],
+        'dependents' => ['street', 'postal', 'city', 'country'],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];

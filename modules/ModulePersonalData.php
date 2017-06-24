@@ -17,7 +17,6 @@ use ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager;
 
 class ModulePersonalData extends \ModulePersonalData
 {
-
     /**
      * Generate the module.
      */
@@ -28,5 +27,4 @@ class ModulePersonalData extends \ModulePersonalData
         parent::compile();
         $fieldDependencyManager->resetDcaData();
     }
-
 }
