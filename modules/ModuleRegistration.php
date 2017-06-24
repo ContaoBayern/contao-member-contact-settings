@@ -18,13 +18,6 @@ use ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager;
 class ModuleRegistration extends \ModuleRegistration
 {
     /**
-     * Original dca field values which are to be resetted when we are done.
-     *
-     * @var array
-     */
-    private $originalFieldValues;
-
-    /**
      * Generate the module.
      */
     public function compile()
