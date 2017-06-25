@@ -1,0 +1,10 @@
+<script src="system/modules/member-contact-settings/assets/js/jquery.field-dependencies.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $('#<?= $this->formId; ?>').fieldDependencies({
+                dependencies: <?= $this->dependencies; ?>
+            });
+        });
+    })(jQuery);
+</script>

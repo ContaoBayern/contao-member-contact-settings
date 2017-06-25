@@ -18,13 +18,26 @@ use ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager;
 class ModuleRegistration extends \ModuleRegistration
 {
     /**
+     * Template.
+     *
+     * @var string
+     */
+    protected $strTemplateJquery = 'jquery_field_dependencies';
+
+    /**
      * Generate the module.
      */
     public function compile()
     {
         $fieldDependencyManager = new FieldDependencyManager($this->editable);
+
         $fieldDependencyManager->setFieldDependencies();
         parent::compile();
         $fieldDependencyManager->resetDcaData();
+
+        $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
+        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
+        $objTemplateJquery->formId = $this->Template->formId;
+        $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
     }
 }

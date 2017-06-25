@@ -49,12 +49,22 @@ class FieldDependencyManager
     }
 
     /**
+     * Returns the depencies as JSON data.
+     *
+     * @return string The JSON encoded dependencies
+     */
+    public function getDependenciesJson()
+    {
+        return json_encode($this->dependencies);
+    }
+
+    /**
      * Sets the dependent ("child") fields to be "mandatory" when the corresponding "parent" field
      * is selected (checkbox is checked).
      */
     public function setFieldDependencies()
     {
-        if(!empty($this->dependencies)) {
+        if (!empty($this->dependencies)) {
             foreach ($this->dependencies as $field => $dependentFields) {
                 if (\Input::post($field)) {
                     foreach ($dependentFields as $dependentField) {

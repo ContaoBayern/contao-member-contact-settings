@@ -16,4 +16,5 @@ ClassLoader::addClasses([
 // Register templates
 TemplateLoader::addFiles([
     'member_default' => 'system/modules/member-contact-settings/templates/member',
+    'jquery_field_dependencies' => 'system/modules/member-contact-settings/templates/jquery',
 ]);
