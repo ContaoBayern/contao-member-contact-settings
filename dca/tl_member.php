@@ -28,7 +28,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactEmail'] = [
         'feEditable' => true,
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
-        'dependents' => ['email'],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
