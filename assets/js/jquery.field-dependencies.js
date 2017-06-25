@@ -9,6 +9,9 @@
         /**
          * Represents a field with dependencies.
          * @constructor
+         * @param form                object The form to which the field belongs
+         * @param fieldName           string The name of the input field
+         * @param dependentFieldNames array  The names of the dependent fields
          */
         function FieldWithDependencies(form, fieldName, dependentFieldNames) {
             var self = this;
