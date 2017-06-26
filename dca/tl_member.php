@@ -14,7 +14,7 @@
 // Modify default palette
 $GLOBALS['TL_DCA']['tl_member']['palettes']['default'] = str_replace(
     'language;',
-    'language;{contactSettings_legend},contactEmail,contactPost,contactPhone,contactFax;',
+    'language;{contactSettings_legend},contactLetter,contactPost,contactPhone,contactFax;',
     $GLOBALS['TL_DCA']['tl_member']['palettes']['default']
 );
 
