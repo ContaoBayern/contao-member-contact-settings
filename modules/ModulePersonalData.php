@@ -23,7 +23,7 @@ class ModulePersonalData extends \ModulePersonalData
     public function compile()
     {
         $fieldDependencyManager = new FieldDependencyManager($this->editable);
-        $fieldDependencyManager->setFieldDependencies();
+        $fieldDependencyManager->setMandatoryFieldDependencies();
         parent::compile();
         $fieldDependencyManager->resetDcaData();
     }

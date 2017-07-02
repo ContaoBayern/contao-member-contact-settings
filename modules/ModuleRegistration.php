@@ -31,7 +31,7 @@ class ModuleRegistration extends \ModuleRegistration
     {
         $fieldDependencyManager = new FieldDependencyManager($this->editable);
 
-        $fieldDependencyManager->setFieldDependencies();
+        $fieldDependencyManager->setMandatoryFieldDependencies();
         parent::compile();
         $fieldDependencyManager->resetDcaData();
 

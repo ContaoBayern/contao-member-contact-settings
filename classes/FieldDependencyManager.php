@@ -62,12 +62,12 @@ class FieldDependencyManager
      * Sets the dependent ("child") fields to be "mandatory" when the corresponding "parent" field
      * is selected (checkbox is checked).
      */
-    public function setFieldDependencies()
+    public function setMandatoryFieldDependencies()
     {
         if (!empty($this->dependencies)) {
             foreach ($this->dependencies as $field => $dependentFields) {
                 if (\Input::post($field)) {
-                    foreach ($dependentFields as $dependentField) {
+                    foreach ($dependentFields['mandatory'] as $dependentField) {
                         // Preserve orignal state of dependent field's mandatory setting so we can reset it later
                         $this->originalFieldValues[$dependentField] = $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'];
 

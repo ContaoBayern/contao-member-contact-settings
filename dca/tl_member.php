@@ -40,7 +40,10 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter'] = [
         'feEditable' => true,
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
-        'dependents' => ['street', 'postal', 'city', 'country'],
+        'dependents' => [
+                'mandatory' => ['street', 'postal', 'city', 'country'],
+                'visibility' => ['street', 'postal', 'city', 'country'],
+            ],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
@@ -53,7 +56,10 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactPhone'] = [
         'feEditable' => true,
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
-        'dependents' => ['phone'],
+        'dependents' => [
+                'mandatory' => ['phone'],
+                'visibility' => ['phone'],
+            ],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
@@ -66,7 +72,10 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactFax'] = [
         'feEditable' => true,
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
-        'dependents' => ['fax'],
+        'dependents' => [
+            'mandatory' => ['fax'],
+            'visibility' => ['fax'],
+        ],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
