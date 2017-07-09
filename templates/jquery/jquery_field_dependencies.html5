@@ -3,7 +3,8 @@
     (function ($) {
         $(document).ready(function () {
             $('#<?= $this->formId; ?>').fieldDependencies({
-                dependencies: <?= $this->dependencies; ?>
+                dependencies: <?= $this->dependencies; ?>,
+                mandatoryLabelHint: '<span class="invisible"><?= $this->mandatoryHintText; ?></span>'
             });
         });
     })(jQuery);

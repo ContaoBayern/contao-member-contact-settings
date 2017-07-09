@@ -2,7 +2,10 @@
     jQuery.fn.fieldDependencies = function (options) {
         var defaults = {
             dependencies: [],
-            mandatoryLabelAdditon: '<span class="mandatory">*</span>'
+            mandatoryClass: 'mandatory',
+            mandatoryLabelAdditon: '<span class="mandatory">*</span>',
+            mandatoryLabelHint: '<span class="invisible">Mandtory</span>',
+            trimLabelText: true
         };
         var config = $.extend(defaults, options);
 
@@ -19,7 +22,13 @@
             self.input = input;
 
             self.label = self.input.siblings('label');
-            self.originalLabelText = self.label.html();
+            self.mandatoryLabelAddition = $(config.mandatoryLabelAdditon);
+            self.mandatoryLabelHint = $(config.mandatoryLabelHint);
+
+            // Trim label text so we can add the label addition (asterisk) without a space before it
+            if (config.trimLabelText) {
+                self.label.html($.trim(self.label.html()));
+            }
 
             self.widget = self.input.parents('.widget');
         }
@@ -29,7 +38,13 @@
          */
         Field.prototype.setMandatory = function () {
             this.input.prop('required', true);
-            this.label.html(this.originalLabelText + config.mandatoryLabelAdditon);
+
+            this.label.prepend(this.mandatoryLabelHint);
+            this.label.append(this.mandatoryLabelAddition);
+
+            this.widget.addClass(config.mandatoryClass);
+            this.input.addClass(config.mandatoryClass);
+            this.label.addClass(config.mandatoryClass);
         };
 
         /**
@@ -37,7 +52,13 @@
          */
         Field.prototype.removeMandatoryStatus = function () {
             this.input.prop('required', false);
-            this.label.html(this.originalLabelText);
+
+            this.mandatoryLabelAddition.detach();
+            this.mandatoryLabelHint.detach();
+
+            this.widget.removeClass(config.mandatoryClass);
+            this.input.removeClass(config.mandatoryClass);
+            this.label.removeClass(config.mandatoryClass);
         };
 
         /**

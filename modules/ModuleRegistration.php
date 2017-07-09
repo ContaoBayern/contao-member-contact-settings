@@ -36,8 +36,9 @@ class ModuleRegistration extends \ModuleRegistration
         $fieldDependencyManager->resetDcaData();
 
         $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
-        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
         $objTemplateJquery->formId = $this->Template->formId;
+        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
+        $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
         $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
     }
 }
