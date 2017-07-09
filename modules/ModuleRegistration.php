@@ -39,6 +39,7 @@ class ModuleRegistration extends \ModuleRegistration
         $objTemplateJquery->formId = $this->Template->formId;
         $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
         $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
+        $objTemplateJquery->showOrHideDependentFieldsFiels = json_encode(true);
         $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
     }
 }

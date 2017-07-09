@@ -5,7 +5,8 @@
             mandatoryClass: 'mandatory',
             mandatoryLabelAdditon: '<span class="mandatory">*</span>',
             mandatoryLabelHint: '<span class="invisible">Mandtory</span>',
-            trimLabelText: true
+            trimLabelText: true,
+            showOrHideDependentFields: true
         };
         var config = $.extend(defaults, options);
 
@@ -100,24 +101,30 @@
                 }
             });
 
-            self.fieldsToShowOrHide = [];
-            $.each(dependencies.visibility, function (index, fieldName) {
-                var input = form.find('[name="' + fieldName + '"]');
-                // Only add fields which are not mandatory by default
-                if (input.attr('required') === undefined) {
-                    self.fieldsToShowOrHide.push(new Field(input));
-                }
-            });
+            if (config.showOrHideDependentFields) {
+                self.fieldsToShowOrHide = [];
+                $.each(dependencies.visibility, function (index, fieldName) {
+                    var input = form.find('[name="' + fieldName + '"]');
+                    // Only add fields which are not mandatory by default
+                    if (input.attr('required') === undefined) {
+                        self.fieldsToShowOrHide.push(new Field(input));
+                    }
+                });
 
-            self.hideDependentFields();
+                self.hideDependentFields();
+            }
 
             self.input.on('change', function () {
                 if ($(this).is(':checked')) {
                     self.setDependentFieldsMandatory();
-                    self.showDependentFields();
+                    if (config.showOrHideDependentFields) {
+                        self.showDependentFields();
+                    }
                 } else {
                     self.removeDependentFieldsMandatoryStatus();
-                    self.hideDependentFields();
+                    if (config.showOrHideDependentFields) {
+                        self.hideDependentFields();
+                    }
                 }
             });
         }
