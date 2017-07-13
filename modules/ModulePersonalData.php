@@ -17,6 +17,12 @@ use ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager;
 
 class ModulePersonalData extends \ModulePersonalData
 {
+    /**
+     * Template.
+     *
+     * @var string
+     */
+    protected $strTemplateJquery = 'jquery_field_dependencies';
 
     /**
      * Generate the module.
@@ -24,9 +30,16 @@ class ModulePersonalData extends \ModulePersonalData
     public function compile()
     {
         $fieldDependencyManager = new FieldDependencyManager($this->editable);
-        $fieldDependencyManager->setFieldDependencies();
+
+        $fieldDependencyManager->setMandatoryFieldDependencies();
         parent::compile();
         $fieldDependencyManager->resetDcaData();
-    }
 
+        $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
+        $objTemplateJquery->formId = $this->Template->formId;
+        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
+        $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
+        $objTemplateJquery->showOrHideDependentFieldsFiels = json_encode(false);
+        $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
+    }
 }

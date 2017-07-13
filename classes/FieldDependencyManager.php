@@ -16,14 +16,21 @@ namespace ContaoBayern\MemberContactSettings\Classes;
 class FieldDependencyManager
 {
     /**
-     * The names of the editable fields we handle
+     * The names of the editable fields we handle.
      *
      * @var array
      */
     private $editable;
 
     /**
-     * Original dca field values which are to be resetted when we are done
+     * The dependencies of the editabel fields (created from dca data).
+     *
+     * @var array
+     */
+    private $dependencies;
+
+    /**
+     * Original dca field values which are to be resetted when we are done.
      *
      * @var array
      */
@@ -32,31 +39,41 @@ class FieldDependencyManager
     /**
      * FieldDependencyManager constructor.
      *
-     * @var array $fieldnames The names of the editable fields we handle
+     * @param $fieldnames array The names of the editable fields we handle
      */
     public function __construct($fieldnames)
     {
         $this->editable = $fieldnames;
         \Controller::loadDataContainer('tl_member');
+        $this->initializeDependencies();
+    }
+
+    /**
+     * Returns the depencies as JSON data.
+     *
+     * @return string The JSON encoded dependencies
+     */
+    public function getDependenciesJson()
+    {
+        return json_encode($this->dependencies);
     }
 
     /**
      * Sets the dependent ("child") fields to be "mandatory" when the corresponding "parent" field
      * is selected (checkbox is checked).
      */
-    public function setFieldDependencies()
+    public function setMandatoryFieldDependencies()
     {
-        foreach ($GLOBALS['TL_DCA']['tl_member']['fields'] as $field => $fieldconfig) {
-            if (!isset($fieldconfig['eval']['dependents']) || !is_array($fieldconfig['eval']['dependents'])) {
-                continue;
-            }
-            if (in_array($field, $this->editable) && \Input::post($field)) {
-                foreach ($fieldconfig['eval']['dependents'] as $dependentField) {
-                    // Preserve orignal state of dependent's field mandatory setting so we can reset it later
-                    $this->originalFieldValues[$dependentField] = $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'];
+        if (!empty($this->dependencies)) {
+            foreach ($this->dependencies as $field => $dependentFields) {
+                if (\Input::post($field)) {
+                    foreach ($dependentFields['mandatory'] as $dependentField) {
+                        // Preserve orignal state of dependent field's mandatory setting so we can reset it later
+                        $this->originalFieldValues[$dependentField] = $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'];
 
-                    // Set field to be mandatory
-                    $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'] = true;
+                        // Set field to be mandatory
+                        $GLOBALS['TL_DCA']['tl_member']['fields'][$dependentField]['eval']['mandatory'] = true;
+                    }
                 }
             }
         }
@@ -78,4 +95,18 @@ class FieldDependencyManager
         }
     }
 
+    /**
+     * Initializes dependencies based on editable fields and dca data.
+     */
+    private function initializeDependencies()
+    {
+        $this->dependencies = [];
+        foreach ($this->editable as $field) {
+            $dependents = $GLOBALS['TL_DCA']['tl_member']['fields'][$field]['eval']['dependents'];
+            if (!isset($dependents) || !is_array($dependents)) {
+                continue;
+            }
+            $this->dependencies[$field] = $dependents;
+        }
+    }
 }

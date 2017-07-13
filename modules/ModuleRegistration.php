@@ -18,11 +18,11 @@ use ContaoBayern\MemberContactSettings\Classes\FieldDependencyManager;
 class ModuleRegistration extends \ModuleRegistration
 {
     /**
-     * Original dca field values which are to be resetted when we are done
+     * Template.
      *
-     * @var array
+     * @var string
      */
-    private $originalFieldValues;
+    protected $strTemplateJquery = 'jquery_field_dependencies';
 
     /**
      * Generate the module.
@@ -30,9 +30,16 @@ class ModuleRegistration extends \ModuleRegistration
     public function compile()
     {
         $fieldDependencyManager = new FieldDependencyManager($this->editable);
-        $fieldDependencyManager->setFieldDependencies();
+
+        $fieldDependencyManager->setMandatoryFieldDependencies();
         parent::compile();
         $fieldDependencyManager->resetDcaData();
-    }
 
+        $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
+        $objTemplateJquery->formId = $this->Template->formId;
+        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
+        $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
+        $objTemplateJquery->showOrHideDependentFieldsFiels = json_encode(true);
+        $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
+    }
 }
