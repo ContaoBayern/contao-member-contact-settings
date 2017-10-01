@@ -5,9 +5,17 @@ Member contact settings extension for Contao Open Source CMS
 
 ## Overview
 
-This module enhances the core modules `Registration` and `MemberData`. Note: for now only
+This module enhances the core modules `Registration` and `MemberData` by adding fields that
+control the allowed contact settings for the registered frontend user. 
+
+Note: for now only
 server side validation is implemented. Standard browser validation is deactivated and
 JavaScript validation will be implemented in a future release.
+
+## Installation via Composer
+
+Search package `contaobayern/contao-member-contact-settings` and install as usual.
+For Contao 4.4.x use the Contao Manager to install the extension.
 
 
 ## Manual Installation
