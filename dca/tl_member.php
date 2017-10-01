@@ -41,9 +41,9 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter'] = [
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
         'dependents' => [
-                'mandatory' => ['street', 'postal', 'city', 'country'],
-                'visibility' => ['street', 'postal', 'city', 'country'],
-            ],
+            'mandatory' => ['street', 'postal', 'city', 'country'],
+            'visibility' => ['street', 'postal', 'city', 'country'],
+        ],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
@@ -57,9 +57,9 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactPhone'] = [
         'feGroup' => 'contactSettings',
         'tl_class' => 'w50',
         'dependents' => [
-                'mandatory' => ['phone'],
-                'visibility' => ['phone'],
-            ],
+            'mandatory' => ['phone'],
+            'visibility' => ['phone'],
+        ],
     ],
     'sql' => "char(1) NOT NULL default ''",
 ];
