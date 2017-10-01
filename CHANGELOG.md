@@ -4,7 +4,8 @@
 ## 1.0.0
 
 ### New
-* Grouped and ungrouped personal data templates are supported
+* Grouped and ungrouped personal data templates are supported (see #13)
+* English translation is added (see #21)
 
 ### Changed
 * A hook is used to add "novalidate" attribute to member data form instead of using an own template (see #14)
