@@ -4,7 +4,7 @@
             dependencies: [],
             mandatoryClass: 'mandatory',
             mandatoryLabelAdditon: '<span class="mandatory">*</span>',
-            mandatoryLabelHint: '<span class="invisible">Mandtory</span>',
+            mandatoryLabelHint: '<span class="invisible">Mandatory </span>',
             trimLabelText: true,
             showOrHideDependentFields: true
         };
@@ -23,8 +23,6 @@
             self.input = input;
 
             self.label = self.input.siblings('label');
-            self.mandatoryLabelAddition = $(config.mandatoryLabelAdditon);
-            self.mandatoryLabelHint = $(config.mandatoryLabelHint);
 
             // Trim label text so we can add the label addition (asterisk) without a space before it
             if (config.trimLabelText) {
@@ -40,8 +38,8 @@
         Field.prototype.setMandatory = function () {
             this.input.prop('required', true);
 
-            this.label.prepend(this.mandatoryLabelHint);
-            this.label.append(this.mandatoryLabelAddition);
+            this.label.prepend($(config.mandatoryLabelHint));
+            this.label.append($(config.mandatoryLabelAdditon));
 
             this.widget.addClass(config.mandatoryClass);
             this.input.addClass(config.mandatoryClass);
@@ -54,8 +52,10 @@
         Field.prototype.removeMandatoryStatus = function () {
             this.input.prop('required', false);
 
-            this.mandatoryLabelAddition.detach();
-            this.mandatoryLabelHint.detach();
+            var html = this.label.html();
+            html = html.replace(config.mandatoryLabelAdditon, '');
+            html = html.replace(config.mandatoryLabelHint, '');
+            this.label.html(html);
 
             this.widget.removeClass(config.mandatoryClass);
             this.input.removeClass(config.mandatoryClass);
@@ -95,20 +95,14 @@
             self.fieldsToSetMandatory = [];
             $.each(dependencies.mandatory, function (index, fieldName) {
                 var input = form.find('[name="' + fieldName + '"]');
-                // Only add fields which are not mandatory by default
-                if (input.attr('required') === undefined) {
                     self.fieldsToSetMandatory.push(new Field(input));
-                }
             });
 
             if (config.showOrHideDependentFields) {
                 self.fieldsToShowOrHide = [];
                 $.each(dependencies.visibility, function (index, fieldName) {
                     var input = form.find('[name="' + fieldName + '"]');
-                    // Only add fields which are not mandatory by default
-                    if (input.attr('required') === undefined) {
                         self.fieldsToShowOrHide.push(new Field(input));
-                    }
                 });
 
                 self.hideDependentFields();

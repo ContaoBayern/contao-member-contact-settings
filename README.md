@@ -5,14 +5,14 @@ Member contact settings extension for Contao Open Source CMS
 
 ## Overview
 
-This module enhances the core modules `Registration` and `MemberData`. Note: for now only 
+This module enhances the core modules `Registration` and `MemberData`. Note: for now only
 server side validation is implemented. Standard browser validation is deactivated and
 JavaScript validation will be implemented in a future release.
 
 
 ## Manual Installation
 
-1. Download the files from the GitHub repository. Rename the folder to `member-contact-settings` 
+1. Download the files from the GitHub repository. Rename the folder to `member-contact-settings`
 and save under `system/modules`.
 2. Update your database and clear the internal cache.
 
@@ -33,7 +33,52 @@ they depend.
 
 | Field          | Dependencies  |
 | -------------  | ------------- |
-| contactEmail   | email | 
 | contactLetter  | street, postal, city, country |
 | contactPhone   | phone |
 | contactFax     | fax   |
+
+
+## Adding your own dependencies
+
+Dependencies are defined in the `tl_member` DCA. In the `eval` array of each field which has dependencies
+there is a new entry `dependents`:
+
+```php
+$GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter'] = [
+    // ...
+    'eval' => [
+        // ...
+        'dependents' => [
+            'mandatory' => ['street', 'postal', 'city', 'country'],
+            'visibility' => ['street', 'postal', 'city', 'country'],
+        ],
+        // ...
+    ]
+]
+```
+
+The array `mandatory` contains the names of the fields which shall be set to mandatory when the parent
+field is checked. The array `visibility` contains the names of the fields which shall be shown or hidden
+according to the parent field.
+
+You can add or modify dependencies in the `system\config\dcaconfig.php` file.
+
+For example if you want to add `state` to the dependencies of `contactLetter`. You can do so by adding
+the following code to `system\config\dcaconfig.php`:
+
+```php
+$GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter']['eval']['dependents']['mandatory'][] = 'state';
+$GLOBALS['TL_DCA']['tl_member']['fields']['contactLetter']['eval']['dependents']['visibility'][] = 'state';
+```
+
+You can also create new dependencies for your own fields wherever you need them:
+```php
+$GLOBALS['TL_DCA']['tl_member']['fields']['myCheckbox']['eval']['dependents'] = [
+    'mandatory' => ['fieldA', 'fieldB', 'fieldC'],
+    'visibility' => ['fieldA', 'fieldB', 'fieldC'],
+];
+```
+
+Attention: a field which is mandatory by default should not be put in any dependents list. Otherwise
+its mandatory status will be controlled by the parent field which is unwanted because the field should
+always be mandatory. 

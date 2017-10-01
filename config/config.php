@@ -16,3 +16,8 @@
  */
 $GLOBALS['FE_MOD']['user']['registration'] = 'ContaoBayern\MemberContactSettings\Modules\ModuleRegistration';
 $GLOBALS['FE_MOD']['user']['personalData'] = 'ContaoBayern\MemberContactSettings\Modules\ModulePersonalData';
+
+/**
+ * Hooks.
+ */
+$GLOBALS['TL_HOOKS']['parseFrontendTemplate'][] = ['ContaoBayern\MemberContactSettings\Classes\TemplateModifier', 'modifyFrontendTemplate'];
