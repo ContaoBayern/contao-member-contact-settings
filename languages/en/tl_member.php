@@ -19,4 +19,4 @@ $GLOBALS['TL_LANG']['tl_member']['contactSettingsDetails'] = 'Contact-settings';
 $GLOBALS['TL_LANG']['tl_member']['contactEmail'] = ['Contact by e-mail', 'I want to be contacted by e-mail.'];
 $GLOBALS['TL_LANG']['tl_member']['contactLetter'] = ['Contact by letter', 'I want to be contacted by letter.'];
 $GLOBALS['TL_LANG']['tl_member']['contactPhone'] = ['Contact by phone', 'I want to be contacted by phone.'];
-$GLOBALS['TL_LANG']['tl_member']['contactFax'] = ['Contact yb fax', 'I want to be contacted by fax.'];
+$GLOBALS['TL_LANG']['tl_member']['contactFax'] = ['Contact by fax', 'I want to be contacted by fax.'];
