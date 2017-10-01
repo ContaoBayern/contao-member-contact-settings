@@ -26,7 +26,7 @@ class TemplateModifier
     public function modifyFrontendTemplate($buffer, $templateName)
     {
         // Add attribute "novalidate" to member data form
-        if ($templateName === 'member_default') {
+        if ($templateName === 'member_default' || $templateName === 'member_grouped') {
             $dom = new \DOMDocument();
             // Add encoding and create dom document without html wrapper
             $dom->loadHTML('<?xml encoding="utf-8" ?>'.$buffer, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
