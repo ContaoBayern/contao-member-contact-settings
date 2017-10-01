@@ -3,6 +3,9 @@
 
 ## 1.0.0
 
+### Changed
+* A hook is used to add "novalidate" attribute to member data form instead of using an own template (see #14)
+
 ### Fixed
 * Fixed Bug which prohibited deactivation of saved contact settings in member data frontend module (see #22)
 
