@@ -1,5 +1,12 @@
 # Contao Member Contact Settings change log
 
+
+## 1.0.0
+
+### Fixed
+* Fixed Bug which prohibited deactivation of saved contact settings in member data frontend module (see #22)
+
+
 ## 0.2.1
 
 ### New
