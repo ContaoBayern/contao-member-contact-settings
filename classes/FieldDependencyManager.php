@@ -106,6 +106,13 @@ class FieldDependencyManager
             if (!isset($dependents) || !is_array($dependents)) {
                 continue;
             }
+
+            // Only handle fields which are actually used by the frontend module
+            $dependents = [
+                'mandatory' => array_intersect($dependents['mandatory'], $this->editable),
+                'visibility' => array_intersect($dependents['visibility'], $this->editable)
+            ];
+
             $this->dependencies[$field] = $dependents;
         }
     }
