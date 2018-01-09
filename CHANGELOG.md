@@ -1,6 +1,16 @@
 # Contao Member Contact Settings change log
 
 
+## 1.0.1
+
+### Changed
+* Option "showOrHideDependentFields" is renamed to "toggleVisibility"
+* Spelling of option "mandatoryLabelAdditon" is corrected to "mandatoryLabelAddition"
+
+### Fixed
+* Only fields which are actually used by the frontend module are handled as dependencies (see #23)
+
+
 ## 1.0.0
 
 ### New
