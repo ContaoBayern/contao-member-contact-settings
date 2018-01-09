@@ -3,7 +3,7 @@
         var defaults = {
             dependencies: [],
             mandatoryClass: 'mandatory',
-            mandatoryLabelAdditon: '<span class="mandatory">*</span>',
+            mandatoryLabelAddition: '<span class="mandatory">*</span>',
             mandatoryLabelHint: '<span class="invisible">Mandatory </span>',
             trimLabelText: true,
             toggleVisibility: true
@@ -39,7 +39,7 @@
             this.input.prop('required', true);
 
             this.label.prepend($(config.mandatoryLabelHint));
-            this.label.append($(config.mandatoryLabelAdditon));
+            this.label.append($(config.mandatoryLabelAddition));
 
             this.widget.addClass(config.mandatoryClass);
             this.input.addClass(config.mandatoryClass);
@@ -53,7 +53,7 @@
             this.input.prop('required', false);
 
             var html = this.label.html();
-            html = html.replace(config.mandatoryLabelAdditon, '');
+            html = html.replace(config.mandatoryLabelAddition, '');
             html = html.replace(config.mandatoryLabelHint, '');
             this.label.html(html);
 
