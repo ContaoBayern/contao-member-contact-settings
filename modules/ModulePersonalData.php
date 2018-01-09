@@ -39,7 +39,7 @@ class ModulePersonalData extends \ModulePersonalData
         $objTemplateJquery->formId = $this->Template->formId;
         $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
         $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
-        $objTemplateJquery->showOrHideDependentFieldsFiels = json_encode(false);
+        $objTemplateJquery->toggleVisibility = json_encode(false);
         $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
     }
 }

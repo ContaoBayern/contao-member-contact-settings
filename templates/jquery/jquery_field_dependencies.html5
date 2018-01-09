@@ -5,7 +5,7 @@
             $('#<?= $this->formId; ?>').fieldDependencies({
                 dependencies: <?= $this->dependencies; ?>,
                 mandatoryLabelHint: '<span class="invisible"><?= $this->mandatoryHintText; ?> </span>',
-                showOrHideDependentFields: <?= $this->showOrHideDependentFieldsFiels; ?>
+                toggleVisibility: <?= $this->toggleVisibility; ?>
             });
         });
     })(jQuery);

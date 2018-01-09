@@ -6,7 +6,7 @@
             mandatoryLabelAdditon: '<span class="mandatory">*</span>',
             mandatoryLabelHint: '<span class="invisible">Mandatory </span>',
             trimLabelText: true,
-            showOrHideDependentFields: true
+            toggleVisibility: true
         };
         var config = $.extend(defaults, options);
 
@@ -98,7 +98,7 @@
                     self.fieldsToSetMandatory.push(new Field(input));
             });
 
-            if (config.showOrHideDependentFields) {
+            if (config.toggleVisibility) {
                 self.fieldsToShowOrHide = [];
                 $.each(dependencies.visibility, function (index, fieldName) {
                     var input = form.find('[name="' + fieldName + '"]');
@@ -111,12 +111,12 @@
             self.input.on('change', function () {
                 if ($(this).is(':checked')) {
                     self.setDependentFieldsMandatory();
-                    if (config.showOrHideDependentFields) {
+                    if (config.toggleVisibility) {
                         self.showDependentFields();
                     }
                 } else {
                     self.removeDependentFieldsMandatoryStatus();
-                    if (config.showOrHideDependentFields) {
+                    if (config.toggleVisibility) {
                         self.hideDependentFields();
                     }
                 }
