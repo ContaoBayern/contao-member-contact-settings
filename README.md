@@ -23,7 +23,7 @@ and save under `system/modules`.
 
 ## Please note
 
-This module's Javascript will not work with form based layouts (i.e. if  "Tableless layout" is
+This module's Javascript will not work with table layouts (i.e. if  "Tableless layout" is
 not checked in the module's definition). This applies to Contao 3 only, as Contao 4 only has
 templates for tableless layouts.
 
