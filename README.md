@@ -6,7 +6,7 @@ Member contact settings extension for Contao Open Source CMS
 ## Overview
 
 This module enhances the core modules `Registration` and `MemberData` by adding fields that
-control the allowed contact settings for the registered frontend user. 
+control the allowed contact settings for the registered frontend user.
 
 ## Installation via Composer
 
@@ -21,12 +21,19 @@ and save under `system/modules`.
 2. Update your database and clear the internal cache.
 
 
+## Please note
+
+This module's Javascript will not work with form based layouts (i.e. if  "Tableless layout" is
+not checked in the module's definition). This applies to Contao 3 only, as Contao 4 only has
+templates for tableless layouts.
+
+
 ## Setup
 
 The setup is the same for both frontend modules (registration and member data):
 
 1. Create a new frontend module of the type "registration" or "member data".
-2. Select your needed fields as usual.
+2. Define the form  as usual.
 3. With the new fields you can add dependencies. For example if you add "contactPhone" the field
 "phone" will become mandatory when the user checks "contactPhone". A list of all dependencies is given below.
 4. Sort the field as you wish. It makes sense to put the dependent fields right below the field from which
@@ -85,4 +92,4 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['myCheckbox']['eval']['dependents'] = 
 
 Attention: a field which is mandatory by default should not be put in any dependents list. Otherwise
 its mandatory status will be controlled by the parent field which is unwanted because the field should
-always be mandatory. 
+always be mandatory.
