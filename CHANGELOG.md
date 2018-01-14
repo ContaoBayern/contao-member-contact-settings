@@ -1,6 +1,12 @@
 # Contao Member Contact Settings change log
 
 
+## 1.1.0
+
+### New
+* Usage of JavaScript and visibility toggling can be controlled via backend option (see #25)
+
+
 ## 1.0.1
 
 ### Changed
