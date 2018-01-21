@@ -35,11 +35,13 @@ class ModuleRegistration extends \ModuleRegistration
         parent::compile();
         $fieldDependencyManager->resetDcaData();
 
-        $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
-        $objTemplateJquery->formId = $this->Template->formId;
-        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
-        $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
-        $objTemplateJquery->toggleVisibility = json_encode(true);
-        $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
+        if ($this->mcsUseJavaScript) {
+            $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
+            $objTemplateJquery->formId = $this->Template->formId;
+            $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
+            $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
+            $objTemplateJquery->toggleVisibility = json_encode((bool) $this->mcsToggleVisibility);
+            $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
+        }
     }
 }

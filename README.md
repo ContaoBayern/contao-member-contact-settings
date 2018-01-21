@@ -23,9 +23,10 @@ and save under `system/modules`.
 
 ## Please note
 
-This module's Javascript will not work with table layouts (i.e. if  "Tableless layout" is
+This module's JavaScript will not work with table layouts (i.e. if  "Tableless layout" is
 not checked in the module's definition). This applies to Contao 3 only, as Contao 4 only has
-templates for tableless layouts.
+templates for tableless layouts. So if you want to use this extension with table layouts you must uncheck
+the "Control field dependencies with JavaScript" option in your registration and personal data frontend modules.
 
 
 ## Setup
@@ -38,6 +39,10 @@ The setup is the same for both frontend modules (registration and member data):
 "phone" will become mandatory when the user checks "contactPhone". A list of all dependencies is given below.
 4. Sort the field as you wish. It makes sense to put the dependent fields right below the field from which
 they depend.
+5. By default field dependencies are controlled on client side via JavaScript (jQuery must be enabled in page layout).
+If you do not want to use JavaScript setting of mandatory status you can uncheck the according option.
+6. With the "Toggle visibility of dependent fields" option you can choose if depedent fields shall be hidden
+when they are not mandatory (can only be used with JavaScript enabled).
 
 
 ## New fields and dependencies in tl_member

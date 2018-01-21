@@ -35,11 +35,13 @@ class ModulePersonalData extends \ModulePersonalData
         parent::compile();
         $fieldDependencyManager->resetDcaData();
 
-        $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
-        $objTemplateJquery->formId = $this->Template->formId;
-        $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
-        $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
-        $objTemplateJquery->toggleVisibility = json_encode(false);
-        $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
+        if ($this->mcsUseJavaScript) {
+            $objTemplateJquery = new \FrontendTemplate($this->strTemplateJquery);
+            $objTemplateJquery->formId = $this->Template->formId;
+            $objTemplateJquery->dependencies = $fieldDependencyManager->getDependenciesJson();
+            $objTemplateJquery->mandatoryHintText = $GLOBALS['TL_LANG']['MSC']['mandatory'];
+            $objTemplateJquery->toggleVisibility = json_encode((bool) $this->mcsToggleVisibility);
+            $GLOBALS['TL_JQUERY'][] = $objTemplateJquery->parse();
+        }
     }
 }
