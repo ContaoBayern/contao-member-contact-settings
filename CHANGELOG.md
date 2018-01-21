@@ -6,6 +6,9 @@
 ### New
 * Usage of JavaScript and visibility toggling can be controlled via backend option (see #25)
 
+### Changed
+* Fields which are mandatory by default are not handled by our extension anymore (see #28)
+
 
 ## 1.0.1
 
