@@ -49,6 +49,7 @@ when they are not mandatory (can only be used with JavaScript enabled).
 
 | Field          | Dependencies  |
 | -------------  | ------------- |
+| contactEmail   | - |
 | contactLetter  | street, postal, city, country |
 | contactPhone   | phone |
 | contactFax     | fax   |
