@@ -108,12 +108,37 @@ class FieldDependencyManager
             }
 
             // Only handle fields which are actually used by the frontend module
+            // and are not mandatory by default
             $dependents = [
-                'mandatory' => array_intersect($dependents['mandatory'], $this->editable),
-                'visibility' => array_intersect($dependents['visibility'], $this->editable)
+                'mandatory' => $this->filterDependents($dependents['mandatory']),
+                'visibility' => $this->filterDependents($dependents['visibility']),
             ];
+
+            // Skip fields with empty dependents
+            if (empty($dependents['mandatory']) || empty($dependents['visibility'])) {
+                continue;
+            }
 
             $this->dependencies[$field] = $dependents;
         }
+    }
+
+    /**
+     * Removes fields which are not used by the frontend module
+     * or are mandatory by default.
+     *
+     * @param array $fields The fields to filter
+     *
+     * @return array An array containing only fields which are used by
+     *               the frontend module and are not mandatory by default
+     */
+    private function filterDependents($fields)
+    {
+        $fields = array_intersect($fields, $this->editable);
+        $fields = array_filter($fields, function ($field) {
+            return !$GLOBALS['TL_DCA']['tl_member']['fields'][$field]['eval']['mandatory'];
+        });
+
+        return $fields;
     }
 }
