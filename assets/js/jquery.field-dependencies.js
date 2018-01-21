@@ -99,10 +99,10 @@
             });
 
             if (config.toggleVisibility) {
-                self.fieldsToShowOrHide = [];
+                self.fieldsToToggleVisibility = [];
                 $.each(dependencies.visibility, function (index, fieldName) {
                     var input = form.find('[name="' + fieldName + '"]');
-                        self.fieldsToShowOrHide.push(new Field(input));
+                        self.fieldsToToggleVisibility.push(new Field(input));
                 });
 
                 self.hideDependentFields();
@@ -145,7 +145,7 @@
          * Shows all dependent fields.
          */
         FieldWithDependencies.prototype.showDependentFields = function () {
-            $.each(this.fieldsToShowOrHide, function (index, field) {
+            $.each(this.fieldsToToggleVisibility, function (index, field) {
                 field.show();
             });
         };
@@ -154,7 +154,7 @@
          * Hides all dependent fields.
          */
         FieldWithDependencies.prototype.hideDependentFields = function () {
-            $.each(this.fieldsToShowOrHide, function (index, field) {
+            $.each(this.fieldsToToggleVisibility, function (index, field) {
                 field.hide();
             });
         };
